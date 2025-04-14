@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Karaoke{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 2rem;
+            margin: 0;
+        }
+        h1, h2 {
+            color: #f9d342;
+        }
+        input, button {
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background: #f9d342;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+        .queue-item {
+            background: #333;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        a {
+            color: #f9d342;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
