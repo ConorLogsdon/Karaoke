@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Song Queue</title></head>
+<body>
+    <h1>🎤 Song Request Queue</h1>
+    {% if queue %}
+        <ul>
+            {% for entry in queue %}
+                <li><strong>{{ entry.name }}</strong> - "{{ entry.song }}"</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No songs yet!</p>
+    {% endif %}
+    <img src="/qrcode" alt="Scan QR code to request a song">
+</body>
+</html>
