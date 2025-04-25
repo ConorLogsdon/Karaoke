@@ -1,13 +1,70 @@
 {% extends "base.html" %}
-{% block title %}Request a Song{% endblock %}
+{% block title %}🎤 Request a Song{% endblock %}
+
 {% block content %}
-<h1>Request a Song 🎤</h1>
-<form method="POST" action="/submit">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="text" name="song" placeholder="Song title" required>
-    <button type="submit">🎶 Submit Request</button>
-</form>
-<p style="text-align: center; margin-top: 2rem;">
-    <a href="/queue">🎧 View Song Queue</a>
-</p>
+<div style="max-width: 500px; margin: 0 auto; padding: 2rem; text-align: center;">
+
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">🎶 Request a Song 🎶</h1>
+    <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 2rem;">🕺💃 Your request helps keep the party going! 🕺💃</p>
+
+    <form id="request-form" method="POST" action="/request" style="display: flex; flex-direction: column; gap: 1rem;">
+        <input 
+            id="name-input" 
+            type="text" name="name" placeholder="Your name" required
+            style="padding: 0.75rem; font-size: 1rem; border-radius: 8px; border: none; outline: none; background-color: #222; color: #fff;">
+        
+        <input 
+            id="song-input"
+            type="text" name="song" placeholder="Song title" required
+            style="padding: 0.75rem; font-size: 1rem; border-radius: 8px; border: none; outline: none; background-color: #222; color: #fff;">
+
+        <button 
+            type="submit"
+            style="padding: 0.75rem; font-size: 1rem; background-color: #FFD700; color: #000; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+            🎤 Submit Request
+        </button>
+    </form>
+
+    <p style="margin-top: 2rem;">
+        <a href="/queue" style="color: #FFD700; text-decoration: none; font-weight: bold;">
+            🎧 View Song Queue
+        </a>
+    </p>
+
+    <hr style="margin: 3rem 0; border-color: #333;">
+
+    <div>
+        <h2 style="color: #FFD700; margin-bottom: 1rem;">🔥 Popular Songs</h2>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 0.5rem;">
+            {% set popular_songs = ["Bohemian Rhapsody", "Shake It Off", "Sweet Caroline", "Uptown Funk", "Let It Go", "Mr. Brightside"] %}
+            {% for song in popular_songs %}
+                <li>
+                    <button 
+                        type="button" 
+                        onclick="quickRequest('{{ song }}')"
+                        style="background-color: #333; color: #fff; padding: 0.75rem 1rem; border: none; border-radius: 8px; width: 100%; cursor: pointer;">
+                        🎵 {{ song }}
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    function quickRequest(songTitle) {
+        const nameInput = document.getElementById('name-input');
+        const songInput = document.getElementById('song-input');
+
+        if (!nameInput.value.trim()) {
+            alert("Please enter your name before choosing a popular song.");
+            nameInput.focus();
+            return;
+        }
+
+        songInput.value = songTitle;
+        document.getElementById('request-form').submit();
+    }
+</script>
 {% endblock %}

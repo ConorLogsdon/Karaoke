@@ -2,44 +2,95 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Karaoke{% endblock %}</title>
+    <title>{% block title %}🎤 Karaoke{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            padding: 2rem;
-            margin: 0;
+        :root {
+            --accent: #FFD700;
+            --background: #121212;
+            --foreground: #ffffff;
+            --muted: #cccccc;
+            --surface: #1e1e1e;
         }
-        h1, h2 {
-            color: #f9d342;
-        }
-        input, button {
-            padding: 1rem;
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-            width: 100%;
+
+        * {
             box-sizing: border-box;
         }
-        button {
-            background: #f9d342;
-            color: #000;
-            border: none;
-            cursor: pointer;
+
+        body {
+            margin: 0;
+            padding: 2rem 1rem;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            min-height: 100vh;
+            line-height: 1.6;
         }
+
+        h1, h2, h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        input, button {
+            font-family: inherit;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 0.75rem 1rem;
+            background-color: var(--surface);
+            color: var(--foreground);
+        }
+
+        input::placeholder {
+            color: var(--muted);
+        }
+
+        button {
+            padding: 0.75rem 1rem;
+            background-color: var(--accent);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #e6c200;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .queue-item {
-            background: #333;
+            background-color: var(--surface);
             margin: 0.5rem 0;
             padding: 1rem;
             border-radius: 8px;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
+
         a {
-            color: #f9d342;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            display: block;
+            margin: 1rem auto;
         }
     </style>
 </head>

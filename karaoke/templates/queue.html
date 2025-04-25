@@ -1,21 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Song Queue{% endblock %}
+{% block title %}🎶 Song Queue{% endblock %}
+
 {% block content %}
-<h1>🎵 Song Queue</h1>
-{% if queue %}
-    {% for entry in queue %}
-        <div class="queue-item">
-            <strong>{{ entry.name }}</strong><br>
-            <em>{{ entry.song }}</em>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>No songs yet! 🎤</p>
-{% endif %}
-<p style="text-align: center; margin-top: 2rem;">
-    <img src="/qrcode" alt="Scan to Request" width="200">
-</p>
-<p style="text-align: center;">
-    <a href="/">⬅ Back to Request Form</a>
-</p>
+<div style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">🎧 Current Song Queue</h1>
+
+    {% if queue %}
+        <ul style="list-style: none; padding: 0; text-align: left;">
+            {% for entry in queue %}
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #444;">
+                    <strong style="color: #FFD700;">{{ entry.name }}</strong>
+                    <span style="color: #ccc;">requested</span>
+                    <em style="color: #00FFCC;">{{ entry.song }}</em>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="font-size: 1.2rem; color: #ccc;">No songs in the queue yet. Be the first to request one! 🎤</p>
+    {% endif %}
+
+    <div style="margin-top: 3rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">📱 Scan to Request Another Song</h2>
+        <img src="/qr" alt="QR Code to request another song"
+             style="width: 220px; height: 220px; border-radius: 12px; border: 2px solid #FFD700;">
+    </div>
+
+    <p style="margin-top: 2rem;">
+        <a href="/" style="color: #FFD700; text-decoration: none; font-weight: bold;">← Request Another Song</a>
+    </p>
+</div>
 {% endblock %}
